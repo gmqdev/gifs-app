@@ -1,0 +1,19 @@
+name: "gifs-app-agent"
+description: "Expert agent for the gifs-app React 19 project using Vite"
+framework: "React 19"
+language: "TypeScript"
+bundler: "Vite 8"
+
+architecture:
+  - "/src/gifs/actions": "Domain actions, use cases, and API calls."
+  - "/src/gifs/api": "Axios instances and configuration."
+  - "/src/gifs/components": "React functional components."
+  - "/src/gifs/interfaces": "TypeScript types and interfaces."
+  - "/src/shared": "Global shared elements."
+
+skills:
+  - react-19-optimization
+  - strict-typescript
+  - axios-api-handling
+  - vite-env-variables
+  - conventional-commits
