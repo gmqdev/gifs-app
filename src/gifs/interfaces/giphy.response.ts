@@ -21,13 +21,12 @@ export interface GiphyGif {
   source_post_url: string;
   is_sticker: number;
   import_datetime: Date;
-  trending_datetime: TrendingDatetime;
+  trending_datetime: string;
   images: Images;
   analytics_response_payload: string;
   analytics: Analytics;
   alt_text: string;
   is_low_contrast: boolean;
-  user?: User;
 }
 
 export interface Analytics {
@@ -63,8 +62,8 @@ export interface Images {
   preview: DownsizedSmall;
   preview_gif: The480_WStill;
   preview_webp: The480_WStill;
-  hd?: DownsizedSmall;
   "480w_still": The480_WStill;
+  hd?: DownsizedSmall;
 }
 
 export interface The480_WStill {
@@ -75,10 +74,10 @@ export interface The480_WStill {
 }
 
 export interface DownsizedSmall {
-  height?: string;
-  width?: string;
-  mp4_size?: string;
-  mp4?: string;
+  height: string;
+  width: string;
+  mp4_size: string;
+  mp4: string;
 }
 
 export interface FixedHeight {
@@ -94,34 +93,9 @@ export interface FixedHeight {
   hash?: string;
 }
 
-export const Rating = {
-  G: "g",
-} as const;
-export type Rating = (typeof Rating)[keyof typeof Rating];
+export type Rating = "g" | "pg";
 
-export const TrendingDatetime = {
-  The00000000000000: "0000-00-00 00:00:00",
-} as const;
-export type TrendingDatetime =
-  (typeof TrendingDatetime)[keyof typeof TrendingDatetime];
-
-export const Type = {
-  GIF: "gif",
-} as const;
-export type Type = (typeof Type)[keyof typeof Type];
-
-export interface User {
-  avatar_url: string;
-  banner_image: string;
-  banner_url: string;
-  profile_url: string;
-  username: string;
-  display_name: string;
-  description: string;
-  instagram_url: string;
-  website_url: string;
-  is_verified: boolean;
-}
+export type Type = "gif";
 
 export interface Meta {
   status: number;
