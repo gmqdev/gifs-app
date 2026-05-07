@@ -94,17 +94,21 @@ export interface FixedHeight {
   hash?: string;
 }
 
-export enum Rating {
-  G = "g",
-}
+export const Rating = {
+  G: "g",
+} as const;
+export type Rating = (typeof Rating)[keyof typeof Rating];
 
-export enum TrendingDatetime {
-  The00000000000000 = "0000-00-00 00:00:00",
-}
+export const TrendingDatetime = {
+  The00000000000000: "0000-00-00 00:00:00",
+} as const;
+export type TrendingDatetime =
+  (typeof TrendingDatetime)[keyof typeof TrendingDatetime];
 
-export enum Type {
-  GIF = "gif",
-}
+export const Type = {
+  GIF: "gif",
+} as const;
+export type Type = (typeof Type)[keyof typeof Type];
 
 export interface User {
   avatar_url: string;
