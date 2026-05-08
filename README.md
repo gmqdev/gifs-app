@@ -1,75 +1,47 @@
-# React + TypeScript + Vite
+# Gifs App - React 19 + TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 🚀 [Ver Demo en Netlify](https://earnest-truffle-6d6b59.netlify.app/)
 
-Currently, two official plugins are available:
+Esta es una aplicación moderna para buscar y visualizar GIFs utilizando la API de Giphy, construida como parte de un proceso de aprendizaje profundo en React.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tecnologías y Características
 
-## React Compiler
+- **React 19**: Aprovechando el nuevo **React Compiler** para optimizaciones automáticas.
+- **TypeScript**: Tipado estricto en toda la aplicación, incluyendo interfaces detalladas para las respuestas de la API.
+- **Vite 8**: Como entorno de desarrollo rápido y empaquetador.
+- **Axios**: Para la gestión de peticiones HTTP con instancias centralizadas.
+- **Caché Personalizada**: Implementación de un sistema de caché mediante `useRef` para evitar peticiones duplicadas y mejorar el rendimiento.
+- **Historial Dinámico**: Gestión de búsquedas recientes con persistencia lógica y eliminación de duplicados.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 📦 Instalación
 
-Note: This will impact Vite dev & build performances.
+1. Clonar el repositorio:
+   ```bash
+   git clone <tu-url-de-github>
+   ```
 
-## Expanding the ESLint configuration
+2. Instalar dependencias:
+   ```bash
+   npm install
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. Configurar variables de entorno:
+   - Renombra el archivo `.env.template` a `.env`.
+   - Agrega tu clave de API de Giphy:
+     ```env
+     VITE_GIPHY_KEY=tu_clave_aqui
+     ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+4. Iniciar el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📐 Arquitectura
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+El proyecto sigue una estructura modular basada en dominios dentro de `src/gifs/`:
+- `actions/`: Lógica de peticiones y casos de uso.
+- `api/`: Configuración de Axios.
+- `components/`: Componentes visuales desacoplados.
+- `hooks/`: Custom hooks para la lógica de estado y caché.
+- `interfaces/`: Definiciones de tipos para el dominio.
