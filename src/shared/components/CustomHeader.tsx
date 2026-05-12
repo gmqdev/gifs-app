@@ -1,6 +1,6 @@
 interface Props {
   title: string;
-  description: string;
+  description?: string;
 }
 
 export const CustomHeader = ({ title, description }: Props) => {
