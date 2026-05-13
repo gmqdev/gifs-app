@@ -3,18 +3,23 @@ import type { GiphyResponse } from "../interfaces/giphy.response";
 import { giphyApi } from "../api/giphy.api";
 
 export const getGifsByQuery = async (query: string): Promise<Gif[]> => {
-  const response = await giphyApi<GiphyResponse>("/search", {
-    params: {
-      q: query,
-      limit: 10,
-    },
-  });
+  try {
+    const response = await giphyApi<GiphyResponse>("/search", {
+      params: {
+        q: query,
+        limit: 10,
+      },
+    });
 
-  return response.data.data.map((gif) => ({
-    id: gif.id,
-    title: gif.title,
-    url: gif.images.fixed_height.url,
-    width: Number(gif.images.fixed_height.width),
-    height: Number(gif.images.fixed_height.height),
-  }));
+    return response.data.data.map((gif) => ({
+      id: gif.id,
+      title: gif.title,
+      url: gif.images.fixed_height.url,
+      width: Number(gif.images.fixed_height.width),
+      height: Number(gif.images.fixed_height.height),
+    }));
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };
